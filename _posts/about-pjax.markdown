@@ -1,9 +1,10 @@
 ---
 
 title: "pjax: 当ajax遇上pushState"
+toc: true
 tags: 
-	- js 
-	- html5
+	- python 
+	- object-c
 ---
 
 >var pjax = pushState + ajax;                  

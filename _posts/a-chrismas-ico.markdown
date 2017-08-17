@@ -1,9 +1,10 @@
 ---
 
 title: "圣诞到了，帮修改一个头像"
+toc: true
 tags: 
-	- 设计 
-	- 杂谈
+	- 生活 
+	- ios 
 ---
 
 ![ico原来的样子](/assets/blogImg/xmas_ico0.jpg)      

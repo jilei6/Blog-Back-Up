@@ -6,7 +6,10 @@ install:
   - npm install
 
 
-#before_script:
+before_script:
+#!/bin/bash
+Cur_Dir=$(pwd)
+echo $Cur_Dir
  # - npm install -g gulp
 
 script:

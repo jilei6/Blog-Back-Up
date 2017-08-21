@@ -9,8 +9,8 @@ env:
     secure: github.com/jilei6/jilei6.github.io
 before_install:
 - export TZ='Asia/Shanghai'  # 设置时区
-- npm install -g hexo
-- npm install -g hexo-cli
+- cnpm install -g hexo
+- cnpm install -g hexo-cli
 before_script:
 # 设置github账户信息
 - git config --global user.name "jilei6" #设置github用户名
@@ -19,7 +19,7 @@ before_script:
 - sed -i'' "s~git@github.com:jilei6/jilei6.github.io.git~https://${REPO_TOKEN}:x-oauth-basic@github.com/jilei6/jilei6.github.io.git~" _config.yml
 # 安装依赖组件
 install:
-- npm install
+- cnpm install
 # 执行的命令
 script:
 - hexo clean

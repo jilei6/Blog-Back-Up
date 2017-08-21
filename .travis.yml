@@ -16,7 +16,7 @@ before_script:
 - git config --global user.name "jilei6" #设置github用户名
 - git config --global user.email 434450279@qq.com #设置github用户邮箱
 # github仓库操作
-- sed -i'' "s~git@github.com:jilei6/jilei6.github.io.git~https://${REPO_TOKEN}:x-oauth-basic@github.com/jilei6/jilei6.github.io.git~" _config.yml
+- sed -i'' "s~git@github.com:jilei6/jilei6.github.io.git~https://${testTravisCI}:x-oauth-basic@github.com/jilei6/jilei6.github.io.git~" _config.yml
 # 安装依赖组件
 install:
 - npm install

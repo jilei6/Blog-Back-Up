@@ -1,0 +1,48 @@
+language: node_js
+
+node_js:
+
+- '8'
+
+branches:
+
+  only:
+
+  - master
+
+env:
+
+ global: github.com/jilei6/jilei6.github.io
+
+ secure: "WmFqNtSm2uRXnAADYKOWZteKNo9fVtAY1w7TsW652NcvNIEdJMoZ6dXWE/U7b90c/khe0XZbrUrNh7kA9Y4viWbD9y3K0yvoaKGX+yM5Q7udBVgzsSzTRtLbI1IJR9oqMIewbtwT9bBjDD4EwhKSP4Lg3sZzwDe+TKsNwihVoh+vefOvoeTjNbtmjyKLFXKJVpC/6vSedciQ62HH7ZyYff+rMTyRC57Rtx9xxeZBFb5YU79m5Mmn9P8PgNx7NiHoKx5EbM8WLVGDuRXeRDtcz+98wq8L6JxBXzrM0jgw5z6k0yW1Sh9lVdkOzMFbBwfSzS8yOPm7evFrJy95E4TNbOzFrA+kpY9FWQ4oF8WLww4jUCwzABQ9B3BHWtN9EBsCPAIwzvq8D7FNEePCMniX/BWT8OJYlrWYkv7imCyMQnK6dIgvPkEYfVvgNZPgQOPbyCuAyAt49EuAsF5wjaaq+QLrojaUFL4WOUR4oVzKCi9q7pE0PZRg1BophCyeiePFPU/D/XNAKwsaTnxsQVcecNzVeDqxlK1JuTBTzPE4+POxdrqLIBy8Vc6pOVh8+uIxAIeNly16R27lZdvddh38zt2YHyTrkm3jJCkiAWgPqyA5vyV8thNdme4Fep9wQF7Ucggs49tb0yQo6djCoBHlw/IRsDrsBmGskx/vwLaI3XA="
+
+before_install:
+
+- export TZ='Asia/Shanghai'
+
+- npm install -g hexo
+
+- npm install -g hexo-cli
+
+before_script:
+
+- git config --global user.name "jilei6"
+
+- git config --global user.email 434450279@qq.com
+
+- sed -i'' "s~git@github.com:jilei6/jilei6.github.io.git~https://${testTravisCI}:x-oauth-basic@github.com/jilei6/jilei6.github.io.git~" _config.yml
+
+install:
+
+- npm install
+
+script:
+
+- hexo clean
+
+- hexo generate
+
+after_success:
+
+- hexo deploy
+

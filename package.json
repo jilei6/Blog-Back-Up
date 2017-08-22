@@ -1,0 +1,20 @@
+{
+  "name": "source",
+  "version": "1.0.0",
+  "description": "- 博客地址：http://jilei.site/    1244443",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jilei6/blog-back-up.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jilei6/blog-back-up/issues"
+  },
+  "homepage": "https://github.com/jilei6/blog-back-up#readme"
+}

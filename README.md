@@ -1,5 +1,5 @@
 # 我的博客信息备份
-- 博客地址：http://jilei.site/    1244443
+- 博客地址：http://jilei.site/    
 
 
 # 相册功能

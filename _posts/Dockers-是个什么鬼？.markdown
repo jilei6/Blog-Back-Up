@@ -1,8 +1,12 @@
 title: Dockers 是个什么鬼？
+toc: true
 author: Jaren
 date: 2017-08-23 18:18:07
-tags:
+tags:  
+    - Docker
+    - Hexo
 ---
+![docker工作架构图-_-!](/assets/blogImg/dockerwork.jpg) 
 > 最近因为通过hexo搭建了一个简易的个人静态博客，因为嫌弃hexo部署冗杂的步骤，所以研究了一些自动化部署的机制，其中就了解到了Docker,粗略的研究了下后，想跟大家一起分享下个人的一些心得理解
 <!-- more -->
 
@@ -57,17 +61,78 @@ DockerHub（https://hub.docker.com/） 是默认的 Registry，由 Docker 公司
 docker pull 命令可以从 Registry 下载镜像。
 docker run 命令则是先下载镜像（如果本地没有），然后再启动容器。      
 看完上面的内容基本还是对Docker有了一个比较基础的认识，关于docker的安装，docker命令的使用,docker的设计原理等。
+###### **四、Docker for Mac的安装使用**
+上面讲了docker的一些基本组件，似乎还是不能让你豁然开朗，那好吧，谁让现在已经步入了工程化编码的时代呢，接下来我们用一系列的工具和简单的命令来操作我们的docker这样会让你甚至不用了解它就可以让他为你所用了  
 
-下一篇我们使用docker实现hexo博客的自动化部署实例
-      
+因为我用的是mac系统，所以我就机遇MAC来进行一些操作，其他的环境小伙伴们可以自行度娘，原理都一样，一通百通。首先给大家分享2个工具，官网下载是在太慢，我把它放到百度云里免除大家被墙的痛苦和煎熬 分别是：Docker for mac 和DockerToolbox    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+**为什么使用Docker for Mac**  
+- 启动时不需要再使用dokcer-machine设定启动的默认的环境，省去了使用virtualbox的过程；  
+- 享受和在linux下使用docker一样的体验. 总之，新工具更方便！  
+
+**mac下启动docker的工具发展**  
+- 最开始使用boot2docker  
+- 再到Docker Toolbox  
+- 最近新出的 Docker for Mac   
+
+**使用Docker for Mac的一些要求** 
+
+    1. Mac must be a 2010 or newer model, with Intel’s hardware support for memory management unit (MMU) virtualization; i.e., Extended Page Tables (EPT)
+    2. OS X 10.10.3 Yosemite or newer
+    3. At least 4GB of RAM
+    4. VirtualBox prior to version 4.3.30 must NOT be installed (it is incompatible with Docker for Mac)
+    主要就是看看你的MAC版本要高于10.10.3 内存要大于4G 而且如果安装过VirtualBox的话，他的版本不能高于4.3.30 （这个其实是有点坑的，影响了我本地虚拟的python环境）没办法
+链接: https://pan.baidu.com/s/1i57oY4d 密码: nds2
+好了，下载完成以后安装Docker for Mac  
+打开下载后的镜像文件：
+ ![docker工作架构图-_-!](/assets/blogImg/docker3.png)   
+ 将Docker拖入Applications即可。  
+ 在Applications中打开装好的Docker，看到Docker的欢迎页面，说明安装成功了。   ![docker工作架构图-_-!](/assets/blogImg/docker6.png) 
+ 按照提示，一路往下走，最终会看到Docker已经运行的页面。  
+ 
+ ![docker工作架构图-_-!](/assets/blogImg/docker2.png) 
+
+最终 在你的Launchpad中显示如下3个ICON就是已经完成安装成功了
+
+  ![docker工作架构图-_-!](/assets/blogImg/docker4.png)
+  
+接下来检查下版本信息
+ ```shell
+$ docker --version  
+Docker version 17.03.1-ce-rc1, build 3476dbf  
+  
+$ docker-compose --version  
+docker-compose version 1.11.2, build dfed245  
+  
+$ docker-machine --version  
+docker-machine version 0.10.0, build 76ed2a6 
+```
+  至此说明已经安装成功  
+  总结：  
+   新发布的docker for mac工具简化了启动docker的配置，如果之前使用了boot2docker或者docker toolbox，由于两者使用的虚拟机不同，docker-for-mac工具不兼容之前的虚拟机，所以在更新工具时需要清除之前的配置包括卸载虚拟机和修改环境变量等等。
+具体的两者的工具的比较详见. [这里][yahoo].
+
+**创建容器并运行它**  
+我们下载的可视化工具终于要大显身手了，哈哈
+![docker工作架构图-_-!](/assets/blogImg/docker7.png)
+点击左上角的 new按钮创建新的容器，因为在dockerHUB上面已经有很多的镜像容器供我们使用了，所以，我们可以直接下载使用，我在这里下载了三个，因为我主要是为了制作hexo镜像所以可以再搜索框中搜索hexo下载量最高的一个使用
+再下载之前还需要解决一个问题，因为众所周知的原因，dockerhub的镜像元下载会非常之慢，我们需要首先切换镜像元，还好国内有家叫DaoCloud的公司帮我们免费解决了这个问题，首先要登录其[官网][dao].进行注册流程，该流程不在赘述，注册完成之后进入该页面
+![docker工作架构图-_-!](/assets/blogImg/docker8.png)
+点击加速器，进入之后选择MAC系统，给直接给你奋发一个镜像链接然后将其如下图添加     
+
+![docker工作架构图-_-!](/assets/blogImg/docker9.png)
+
+![docker工作架构图-_-!](/assets/blogImg/docker10.png)  
+
+添加完成之后点击apply重新运行
+然后再下载容器，你会发现嗖嗖的~~  
+下载完成之后，要重新设置镜像的挂载，可视化工具真的是方便啊
+![docker工作架构图-_-!](/assets/blogImg/docker11.png)
+在这里切换成你的文件夹路径即可，返回Kitematic页面进行重启容器然后测试下
+![docker工作架构图-_-!](/assets/blogImg/docker12.png)
+OK了
+
+接下来我会实现一个docker+hexo+github+coding+Travis来实现我的个人博客
+
+[dao]: https://dashboard.daocloud.io
+[yahoo]: https://docs.docker.com/docker-for-mac/docker-toolbox/?spm=5176.100239.blogcont57215.11.fEXQsz

@@ -1,10 +1,11 @@
+---
 title: Dockers 是个什么鬼？
 toc: true
 author: Jaren
 date: 2017-08-23 18:18:07
 tags:  
     - Docker
-    - Hexo
+
 ---
 ![docker工作架构图-_-!](/assets/blogImg/dockerwork.jpg) 
 > 最近因为通过hexo搭建了一个简易的个人静态博客，因为嫌弃hexo部署冗杂的步骤，所以研究了一些自动化部署的机制，其中就了解到了Docker,粗略的研究了下后，想跟大家一起分享下个人的一些心得理解

@@ -2,6 +2,11 @@ title: Hybrid框架设计思想
 author: Jaren
 date: 2017-11-11 17:03:02
 tags:
+- Objective-C
+- iOS
+- Github
+- Hybrid
+- UIWebview
 ---
 >**前言**：作为一种混合开发的模式，Hybrid APP底层依赖于Native提供的容器（UIWebview），上层使用Html&Css&JS做业务开发，底层透明化、上层多多样化，这种场景非常有利于前端介入，H5的低成本、高效率、跨平台等特性非常适合业务快速迭代。
 <!-- more -->  

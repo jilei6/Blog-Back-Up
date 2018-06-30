@@ -1,5 +1,6 @@
 #coding: utf-8
 from PIL import Image
+
 import os
 import sys
 import json
